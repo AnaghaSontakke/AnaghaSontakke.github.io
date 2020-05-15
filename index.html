@@ -15,12 +15,12 @@
 
 <body>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-6 col-md-6">
             <div class="container area justify-content-center">
-                <div id="canvas-container"></div>
+                <div id="canvas-container" class="canvas-container"></div>
             </div>
         </div>
-        <div class="col-md-1 p-0">
+        <div class="col-xs-12 col-md-1 p-0">
             <div class="day text-center">
                 <i class="fas fa-calendar-alt fa-3x"></i>
                 <div class="day-value" id="day-value">0</div>
@@ -30,8 +30,8 @@
                 <label for="cityA" class="city-label">Block A</label><br>
                 <input type="radio" id="cityB" name="city" class="city-radio">
                 <label for="cityB" class="city-label">Block B</label><br>
-                <input type="radio" id="cityC" name="city" class="city-radio">
-                <label for="cityC" class="city-label">Block C</label><br>
+                <input type="radio" id="cityC" name="city" class="city-radio city-c">
+                <label for="cityC" class="city-label city-c">Block C</label><br>
             </form>
             <div class="">
                 <div class="row">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-xs-5 col-md-5">
             <div class="container">
                 <div class="stats">
                     <div class="row mt-3">
@@ -67,7 +67,7 @@
                     <div class="container-fluid">
                         <!-- Controls -->
                         <div class="row">
-                            <div class="col-md">
+                            <div class="col-xs">
                                 <div class="row">
                                     <div class="col-8 py-2">
                                         <i class="fas fa-house-user fa-lg"></i>
@@ -78,26 +78,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col-xs sd-div">
                                 <div class="row">
-                                    <div class="col-10 sd py-2">
+                                    <div class="col-md-6 col-xs-5 sd sd-label py-2">
                                         <i class="fas fa-people-arrows fa-lg"></i>
                                         <label class='control-label'>Social Distance</label>
                                     </div>
-                                    <div class="col-2 p-0 sd">
+                                    <div class="col-md-6 col-xs-7 p-0 sd sd-check">
                                         <input type="checkbox" id="SD" class="controls-check">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md py-2">
+                            <div class="col-xs py-2 ss">
                                 <input type="range" id="FPS-slider" class="custom-range" min="1" max="24" value="" step="1">
                                 <label class="control-label">Simulation Speed</label>
                             </div>
-                            <div class="col-md py-2">
+                            <div class="col-xs py-2 hb-div">
                                 <input type="text" class="control-input-text" id="NO_BED" value="30">
                                 <label class="control-label">Hospital beds</label>
                             </div>
-                            <div class="col-md py-2">
+                            <div class="col-xs py-2 ppb">
                                 <input type="text" class="control-input-text" id="POP_PER_BOX" value="30">
                                 <label class="control-label">Population per box</label>
                             </div>

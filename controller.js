@@ -1,7 +1,7 @@
 const CANVAS_WIDTH = 700;
 const CANVAS_HEIGHT = 650;
-const MOBILE_CANVAS_WIDTH = 320;
-const MOBILE_CANVAS_HEIGHT = 320;
+const MOBILE_CANVAS_WIDTH = 350;
+const MOBILE_CANVAS_HEIGHT = 700;
 
 const colors = { HEALTHY: "#4ecca3", INFECTED: "#ff6363", DECEASED: "#f5f5f5", STAFF:"#4ecca3" }
 
@@ -16,7 +16,36 @@ const colors = { HEALTHY: "#4ecca3", INFECTED: "#ff6363", DECEASED: "#f5f5f5", S
 width:300*0.25 = 75
 height:260*0.25 = 65
 */
-const BOXES = [
+let BOXES;
+let HOSPITAL;
+if(onMobile()){
+    BOXES = [
+        [{ x: 126, y: 80},
+            {x:228.5,y:80},
+            {x:74.5,y:171.5},
+            {x:176.5,y:171.5},
+            {x:278,y:171.5},
+            {x:125.5,y:263.5},
+            {x:228.5,y:263.5}],
+        [{ x: 126, y: 400},
+            {x:228.5,y:400},
+            {x:74.5,y:490},
+            {x:176.5,y:490},
+            {x:278,y:490},
+            {x:125.5,y:583},
+            {x:228.5,y:583}],
+    ];
+    HOSPITAL = [
+        [
+            {x:228.5,y:80}
+        ],
+        [
+            {x:228.5,y:400},
+            {x:278,y:490}
+        ]
+    ];
+}else{
+BOXES = [
     [{ x: 126, y: 80},
         {x:228.5,y:80},
         {x:74.5,y:171.5},
@@ -38,8 +67,8 @@ const BOXES = [
         {x:278,y:490},
         {x:125.5,y:583},
         {x:228.5,y:583}],
-]
-const HOSPITAL = [
+];
+HOSPITAL = [
     [
         {x:228.5,y:80}
     ],
@@ -53,6 +82,7 @@ const HOSPITAL = [
         {x:278,y:490}
     ]
 ];
+}
 const PERSON_RADIUS = 7;
 // control params
 let PHI = 0.2;
@@ -84,13 +114,24 @@ const status = { HEALTHY: "HEALTHY", INFECTED: "INFECTED", DECEASED: "DECEASED",
 
 // for graph
 let daysData;
-let healthyData=[[],[],[]];
-let infectedData=[[],[],[]];
-let deceasedData=[[],[],[]];
-let eradicated_days=[0,0,0];
-let highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
-let blink=true;
-let opflag=0;
+let healthyData;
+let infectedData;
+let deceasedData;
+let eradicated_days;
+let highlight;
+if(onMobile()){
+    healthyData=[[],[]];
+    infectedData=[[],[]];
+    deceasedData=[[],[]];
+    eradicated_days=[0,0];
+    highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+}else{
+    healthyData=[[],[],[]];
+    infectedData=[[],[],[]];
+    deceasedData=[[],[],[]];
+    eradicated_days=[0,0,0];
+    highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+}
 
 $('#playpause').on('click', togglePause);
 $('#reset').on('click', reset);
@@ -238,9 +279,9 @@ function draw() {
                 }else{
                     hexagon(box.x,box.y,0.4,true);
                 }
-                extraLeft = $('#canvas-container').position().left + $('.area').position().left-50;
+                /*extraLeft = $('#canvas-container').position().left + $('.area').position().left-50;
                 extraTop = $('#canvas-container').position().top-6;
-                /*icon = createElement('i');
+                icon = createElement('i');
                 icon.addClass('fas fa-hospital fa-3x');
                 icon.position(box.x+extraLeft, box.y+extraTop);
                 icon.style('color','#222831');
@@ -262,18 +303,30 @@ function draw() {
         });
         p = createP(String.fromCharCode(97 + BOXES.indexOf(city)).toUpperCase());
         p.style('font-size','30px');
-        p.position(city[4].x+30,city[1].y);
+        let ex;
+        if(onMobile()){
+            ex = 70;
+        }else{
+            ex = 30;
+        }
+        p.position(city[4].x+ex,city[1].y);
     });
     drawPopulation();
     nextRound();
 }
 
 function setGraphOptions() {
+    let w;
+    if(onMobile()){
+        w=320;
+    }else{
+        w=700;
+    }
     Highcharts.setOptions({
         chart: {
             backgroundColor: "#222831",
             height: 500,
-            width:700
+            width:w
         },
         title: {
             style: { color: '#bbb' }
@@ -300,12 +353,19 @@ function setupPopulation() {
     population = [];
 
     daysData = [];
-    healthyData=[[],[],[]];
-    infectedData=[[],[],[]];
-    deceasedData=[[],[],[]];
-    eradicated_days=[0,0,0];
-    let highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
-
+    if(onMobile()){
+        healthyData=[[],[]];
+        infectedData=[[],[]];
+        deceasedData=[[],[]];
+        eradicated_days=[0,0];
+        highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+    }else{
+        healthyData=[[],[],[]];
+        infectedData=[[],[],[]];
+        deceasedData=[[],[],[]];
+        eradicated_days=[0,0,0];
+        highlight = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+    }
     $("#eradicated").html("");
     count=0;
     for (let i = 0; i <BOXES.length; i++) {
@@ -361,10 +421,20 @@ function setupPopulation() {
 }
 
 function updateStats() {
-    let healthyCount = [0,0,0];
-    let infectedCount = [0,0,0];
-    let deceasedCount = [0,0,0];
-
+    let healthyCount;
+    let infectedCount;
+    let deceasedCount;
+    if(onMobile()){
+        healthyCount = [0,0];
+        infectedCount = [0,0];
+        deceasedCount = [0,0];
+        totalcities=2;
+    }else{
+        healthyCount = [0,0,0];
+        infectedCount = [0,0,0];
+        deceasedCount = [0,0,0];
+        totalcities=3;
+    }
     population.forEach(person => {
         if (person.status === status.HEALTHY || person.status === status.STAFF)
             healthyCount[person.cityNo]++;
@@ -375,7 +445,7 @@ function updateStats() {
     });
     if (days % 25 === 0) {
         daysData.push(days);
-        for(i=0;i<3;i++){
+        for(i=0;i<totalcities;i++){
             healthyData[i].push(healthyCount[i]);
             infectedData[i].push(infectedCount[i]);
             deceasedData[i].push(deceasedCount[i]);
@@ -384,12 +454,17 @@ function updateStats() {
     }
     if (infectedCount[city_choice] <= 0) {
         $("#eradicated").html("Epidemic Eradicated!");
+        if(onMobile()){
+            highlight=[[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+        }else{
+            highlight=[[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+        }
         drawGraph();
         if(eradicated_days[city_choice]==0) eradicated_days[city_choice]=days;
         if(infectedCount[0]<=0 && infectedCount[1]<=0 && infectedCount[2]<=0) {
             togglePause();
             mtext="<p>";
-            for(i=0;i<3;i++){
+            for(i=0;i<totalcities;i++){
                 mtext+='Block '+String.fromCharCode(97 + i).toUpperCase()+'<br>';
                 mtext+='Days required to eradicate pandemic: '+eradicated_days[i]+'<br>';
                 mtext+='Number of healthy: '+healthyCount[i]+'<br>';
@@ -657,14 +732,23 @@ function setMoveFromCentral() {
             && person.boxNo === 3) {
             if (random() < P_FROM_CENTRAL_LOCATIONS) {
                 person.isTravelling = true;
-                if(person.cityNo==0){
-                    boxes = [0,2,3,4,5,6]
-                }else if(person.cityNo==1){
-                    boxes = [1,3,5,6]
+                if(onMobile){
+                    if(person.cityNo==0){
+                        boxes = [0,2,3,4,5,6]
+                    }else if(person.cityNo==1){
+                        boxes = [1,3,5,6]
+                    }
+                }else{
+                    if(person.cityNo==0){
+                        boxes = [0,2,3,4,5,6]
+                    }else if(person.cityNo==1){
+                        boxes = [1,3,5,6]
+                    }
+                    else{
+                        boxes = [0,2,3,5,6]
+                    }
                 }
-                else{
-                    boxes = [0,2,3,5,6]
-                }
+                
                 temp = BOXES[person.cityNo][boxes[floor(random(boxes.length))]];
                 point = getpoint(temp.x,temp.y);
                 person.destinationX = point.x;
@@ -711,14 +795,22 @@ function setMoveFromHospital() {
         if (inArray(person.box,HOSPITAL)
             && person.status === status.HEALTHY
             && !person.isTravelling) {
-            if(person.cityNo==0){
-                boxes = [0,2,3,4,5,6]
-            }else if(person.cityNo==1){
-                boxes = [1,3,5,6]
-            }
-            else{
-                boxes = [0,2,3,5,6]
-            }
+                if(onMobile){
+                    if(person.cityNo==0){
+                        boxes = [0,2,3,4,5,6]
+                    }else if(person.cityNo==1){
+                        boxes = [1,3,5,6]
+                    }
+                }else{
+                    if(person.cityNo==0){
+                        boxes = [0,2,3,4,5,6]
+                    }else if(person.cityNo==1){
+                        boxes = [1,3,5,6]
+                    }
+                    else{
+                        boxes = [0,2,3,5,6]
+                    }
+                }
             newBox = person.city[boxes[floor(random(boxes.length))]];
             //let newBox = person.city[floor(random(6))];
             person.isTravelling = true;

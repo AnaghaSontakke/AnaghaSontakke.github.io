@@ -1,5 +1,4 @@
 /*
-hospital color change
 opacity of shopping and hospital icon*/
 body{
     margin: 0;
@@ -94,7 +93,6 @@ form{
 }
 .sd{
     position:relative;
-    left:-15%;
 }
 .control-btn{
     transform:scale(3);
@@ -143,7 +141,80 @@ canvas {
 #deceased-count {
     color: #f5f5f5;
 }
-
+.sd-div, .hb-div{
+    padding-right:2mm;
+    padding-left: 2mm;
+}
 @media only screen and (max-width: 768px) {
-    
+    .sd{
+        left:0%;
+        margin-left:2mm;
+    }
+    .custom-range{
+        width:60%;
+    }
+    .control-input-text{
+        width:40px;
+    }
+    .controls{
+        margin: auto;
+        width: 90%;
+        margin-top: 10px;
+    }
+    .sd-label{
+        width:50%;
+    }
+    .sd-check{
+        width:20%;
+    }
+    .control-label{
+        width:50%;
+    }
+    .stats-heading{
+        position: relative;
+        margin: 0px;
+    }
+    .day{
+        margin:auto;
+        width:30%;
+        margin-top: 30%;
+    }
+    .control-btn{
+        left: 50%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    #canvas-container{
+        width:350px;
+        height:700px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .highcharts-container{
+        width:320px;
+        margin:auto;
+    }
+    .ppb{
+        width:10%;
+    }
+    .ss{
+        width:20%;
+    }
+    .city-c{
+        display: none;
+    }
+    #reset{
+        MARGIN-LEFT: -20%;
+        margin-top: -77%;
+        margin-bottom: 76%;
+    }
+    #playpause{
+        MARGIN-TOP: -81%;
+        MARGIN-BOTTOM: 81%;
+        margin-left: 10%;
+    }
+    .sd-div, .hb-div{
+        padding-right:0mm;
+        padding-left: 0mm;
+    }
 }
