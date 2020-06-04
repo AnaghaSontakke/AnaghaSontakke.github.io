@@ -24,6 +24,17 @@ body:before{
 .modal-body{
     color:black;
 }
+.modal-dialog{
+    max-width: 650px;
+}
+.ftu-img{
+    max-width:100%;
+}
+#ftu-btn{
+    background: none;
+    color: white;
+    border: none;
+}
 .btn-invisible{
     display:none;
 }

@@ -1,3 +1,6 @@
+$(document).ready(function(){
+    $('#ftu-btn').click();
+});
 const CANVAS_WIDTH = 700;
 const CANVAS_HEIGHT = 650;
 const MOBILE_CANVAS_WIDTH = 350;
@@ -279,13 +282,13 @@ function draw() {
                 }else{
                     hexagon(box.x,box.y,0.4,true);
                 }
-                /*extraLeft = $('#canvas-container').position().left + $('.area').position().left-50;
-                extraTop = $('#canvas-container').position().top-6;
+                extraLeft = $('#canvas-container').position().left + $('.area').position().left-40;
+                extraTop = $('#canvas-container').position().top+5;
                 icon = createElement('i');
-                icon.addClass('fas fa-hospital fa-3x');
+                icon.addClass('far fa-hospital fa-lg');
                 icon.position(box.x+extraLeft, box.y+extraTop);
                 icon.style('color','#222831');
-                //icon.style('opacity',0.5);*/
+                //icon.style('opacity',0.5);
             }/*else if(city.indexOf(box)==3){
                 stroke(255);
                 hexagon(box.x,box.y,0.4,false);
