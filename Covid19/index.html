@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property='og:title' content='Covid-19 and Rural India'>
+    <meta property="og:image" content="http://anaghasontakke.github.io/Thumbnail.png">
+    <meta property='og:description' content='The aim of the interactive visualisation is to map the spread of COVID-19 in simulated cities so that responsible stakeholders can use it to strategies their further actions.' />
+    <meta property='og:url' content='http://anaghasontakke.github.io/' />
+    <title>Covid-19 and Rural India</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="../index.html"><i class="fa fa-home home-icon" aria-hidden="true"></i></a>
+        <span>Covid-19 Simulation</span>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-6">
+            <div class="container area justify-content-center">
+                <div id="canvas-container" class="canvas-container"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-1 p-0">
+            <div class="day text-center">
+                <i class="fa fa-calendar fa-3x"></i>
+                <div class="day-value" id="day-value">0</div>
+            </div>
+            <form class="text-center">
+                <input type="radio" id="cityA" name="city" class="city-radio" checked>
+                <label for="cityA" class="city-label">Block A</label><br>
+                <input type="radio" id="cityB" name="city" class="city-radio">
+                <label for="cityB" class="city-label">Block B</label><br>
+                <input type="radio" id="cityC" name="city" class="city-radio city-c">
+                <label for="cityC" class="city-label city-c">Block C</label><br>
+            </form>
+            <div class="">
+                <div class="row">
+                    <button id="reset" class="control-btn"><i class="fa fa-refresh"></i></button>
+                </div>
+                <div class="row">
+                    <button id="playpause" class="control-btn"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-5 col-md-5">
+            <div class="container">
+                <div class="stats">
+                    <div class="row mt-3">
+                        <div class="col-md">
+                            <!-- Trigger the modal with a button on document load -->
+                            <button type="button" data-toggle="modal" data-target="#ftu" id="ftu-btn"><i class="fa fa-question-circle fa-lg"></i></button>
+                            <h6 class="stats-heading">
+                                Healthy: <strong class="mr-5" id="healthy-count"></strong> Infected: <strong class="mr-5" id="infected-count"></strong> Deceased: <strong class="mr-5" id="deceased-count"></strong>
+                            </h6>
+                            <h6 class="text-white mt-3" id="eradicated"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container graph-container">
+                    <div id="graph-container" class="mt-4 p-0"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="controls">
+                    <div class="container-fluid">
+                        <!-- Controls -->
+                        <div class="row">
+                            <div class="col-xs">
+                                <div class="row">
+                                    <div class="col-8 py-2">
+                                        <i class="fa fa-home fa-lg"></i>
+                                        <label class='control-label'>Lock Down</label>
+                                    </div>
+                                    <div class="col-4 p-0">
+                                        <input type="checkbox" class="controls-check" id="LOCKDOWN">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs sd-div">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-5 sd sd-label py-2">
+                                        <i class="fa fa-users fa-lg"></i>
+                                        <label class='control-label'>Social Distance</label>
+                                    </div>
+                                    <div class="col-md-6 col-xs-7 p-0 sd sd-check">
+                                        <input type="checkbox" id="SD" class="controls-check">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs py-2 ss">
+                                <input type="range" id="FPS-slider" class="custom-range" min="1" max="24" value="" step="1">
+                                <label class="control-label">Simulation Speed</label>
+                            </div>
+                            <div class="col-xs py-2 hb-div">
+                                <input type="text" class="control-input-text" id="NO_BED" value="30">
+                                <label class="control-label">Hospital beds</label>
+                            </div>
+                            <div class="col-xs py-2 ppb">
+                                <input type="text" class="control-input-text" id="POP_PER_BOX" value="30">
+                                <label class="control-label">Population per unit</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="line float-left"></div>-->
+    <!--<div class="line float-right line-right"></div>-->
+
+    <div class="container-fluid text-center text-muted pb-4">
+        [ This is a simulation and does not represent any real world data or situations in any way. ]
+    </div>
+
+    <div>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn-invisible" data-toggle="modal" data-target="#stats"></button>
+
+        <!-- Modal -->
+        <div id="stats" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Statistics</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- Modal -->
+        <div id="ftu" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Instructions</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="ftue.png" class="ftu-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="controller.js"></script>
+</body>
+
+</html>

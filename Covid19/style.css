@@ -1,0 +1,289 @@
+/*
+opacity of shopping and hospital icon*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #15191e;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: white;
+    height: 100%;
+    width: 100%
+}
+
+.home-icon {
+    font-size: 40px !important;
+    color: white !important;
+    margin-left: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 7vh;
+    padding: 10px 5px 10px 5px;
+    background: rgba(48, 71, 94, 1);
+    overflow: hidden;
+    color: white;
+    font-weight: Bold;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header span {
+    display: inline-block;
+    width: 90vw;
+    text-align: center;
+}
+
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.modal-title {
+    color: black;
+}
+
+.modal-body {
+    color: black;
+}
+
+.modal-dialog {
+    max-width: 650px;
+}
+
+.ftu-img {
+    max-width: 100%;
+}
+
+#ftu-btn {
+    background: none;
+    color: white;
+    border: none;
+}
+
+.btn-invisible {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.stats {
+    text-align: center;
+}
+
+.stats-heading {
+    display: inline;
+    background-color: #30475e;
+    margin: 3mm;
+    border-radius: 5mm;
+    padding: 2mm;
+}
+
+.cityradio {
+    transform: scale(1.5);
+}
+
+.city-label {
+    border: 1px solid white;
+    border-radius: 5mm;
+    width: 80px;
+    padding: 1mm;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.day {
+    border: 3px solid white;
+    border-radius: 50%;
+    padding: 5mm 0mm 5mm 0mm;
+    margin-top: 60%;
+}
+
+.fa-calendar-alt {
+    position: relative;
+}
+
+.day-value {
+    color: white;
+    font-size: x-large;
+}
+
+form {
+    margin-top: 15px;
+}
+
+.controls {
+    border-radius: 5px;
+    background-color: #30475e;
+    margin: auto;
+    margin-top: 3mm;
+    width: 90%;
+    height: 8%
+}
+
+.control-input-text {
+    width: 60px;
+    border-radius: 7px;
+    border: 0px;
+    padding-left: 5px;
+}
+
+.controls-check {
+    transform: scale(2);
+    top: 20%;
+    position: relative;
+    border: 0px;
+}
+
+.control-label {
+    display: block;
+    font-size: 12px;
+}
+
+.sd {
+    position: relative;
+}
+
+.control-btn {
+    transform: scale(3);
+    border-radius: 50%;
+    border: 0px;
+    position: relative;
+    left: 40%;
+    margin-top: 40%;
+    background: #30475e;
+    color: white;
+}
+
+#NO_BED:disabled {
+    color: black;
+    opacity: 0.5;
+}
+
+#POP_PER_BOX:disabled {
+    color: black;
+    opacity: 0.5;
+}
+
+.line {
+    border-bottom: 2px solid red;
+    position: absolute;
+    width: 25%;
+    top: 75%;
+}
+
+.line-right {
+    right: 0px;
+}
+
+canvas {
+    display: block;
+    border-radius: 5mm;
+}
+
+#canvas-container {
+    width: 700px;
+    height: 650px;
+    margin: 5mm auto;
+}
+
+#healthy-count {
+    color: #4ecca3;
+}
+
+#infected-count {
+    color: #ff6363;
+}
+
+#deceased-count {
+    color: #f5f5f5;
+}
+
+.sd-div,
+.hb-div {
+    padding-right: 2mm;
+    padding-left: 2mm;
+}
+
+@media only screen and (max-width: 768px) {
+    .sd {
+        left: 0%;
+        margin-left: 2mm;
+    }
+    .custom-range {
+        width: 60%;
+    }
+    .control-input-text {
+        width: 40px;
+    }
+    .controls {
+        margin: auto;
+        width: 90%;
+        margin-top: 10px;
+    }
+    .sd-label {
+        width: 50%;
+    }
+    .sd-check {
+        width: 20%;
+    }
+    .control-label {
+        width: 50%;
+    }
+    .stats-heading {
+        position: relative;
+        margin: 0px;
+    }
+    .day {
+        margin: auto;
+        width: 30%;
+        margin-top: 30%;
+    }
+    .control-btn {
+        left: 50%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    #canvas-container {
+        width: 350px;
+        height: 700px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .highcharts-container {
+        width: 320px;
+        margin: auto;
+    }
+    .ppb {
+        width: 10%;
+    }
+    .ss {
+        width: 20%;
+    }
+    .city-c {
+        display: none;
+    }
+    #reset {
+        MARGIN-LEFT: -20%;
+        margin-top: -77%;
+        margin-bottom: 76%;
+    }
+    #playpause {
+        MARGIN-TOP: -81%;
+        MARGIN-BOTTOM: 81%;
+        margin-left: 10%;
+    }
+    .sd-div,
+    .hb-div {
+        padding-right: 0mm;
+        padding-left: 0mm;
+    }
+}
