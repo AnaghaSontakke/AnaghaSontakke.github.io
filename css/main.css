@@ -18,6 +18,54 @@ body {
     overflow: hidden;
 }
 
+.project_div {
+    width: 50em;
+    padding: 20px 5px;
+    position: relative;
+    margin: auto;
+}
+
+.para {
+    color: rgba(255, 255, 255, 1);
+    font-family: Inter;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+    margin-top: 5px;
+    position: relative;
+}
+
+.top_block {
+    width: 50em;
+    height: 15em;
+    background: rgba(48, 71, 94, 1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: relative;
+    margin: 10em auto 0em auto;
+}
+
+.bottom_block {
+    width: 50em;
+    background: rgba(49, 49, 49, 1);
+    opacity: 1;
+    overflow: hidden;
+    padding: 10px 20px;
+    position: relative;
+    margin: auto;
+}
+
+.profile_image {
+    width: 15em;
+    height: 15em;
+    background: url(../images/v2_31.png);
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    margin: 2em;
+    position: absolute;
+}
+
 .name {
     color: rgba(255, 255, 255, 1);
     font-family: Inter;
@@ -42,15 +90,15 @@ body {
     opacity: 1;
     padding: 5px 10px;
     overflow: hidden;
-    display: inline;
+    display: inline-block;
     color: white;
     font-style: helvetica;
     font-family: Inter;
     font-weight: Regular;
     font-size: 16px;
     position: relative;
-    top: 4%;
-    border-radius: 5px
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .project_btn {
@@ -64,7 +112,7 @@ body {
     padding: 15px;
     border-radius: 10px;
     display: inline-block;
-    width: 47%;
+    width: 20em;
     margin: 0px 10px;
     align-self: center;
     text-align: center;
@@ -75,123 +123,4 @@ body {
     font-family: Inter;
     font-weight: Regular;
     font-size: 16px;
-}
-
-@media only screen and (min-width: 320px) {
-    .top_block {
-        width: 80%;
-        height: 10%;
-        background: rgba(48, 71, 94, 1);
-        opacity: 1;
-        position: absolute;
-        top: 5%;
-        left: 10%;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        overflow: hidden;
-    }
-    .bottom_block {
-        width: 80%;
-        height: 17%;
-        background: rgba(49, 49, 49, 1);
-        opacity: 1;
-        position: absolute;
-        top: 15%;
-        left: 10%;
-        overflow: hidden;
-        padding: 10px 20px;
-    }
-    .profile_image {
-        width: 200px;
-        height: 200px;
-        background: url(../images/v2_31.png);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        opacity: 1;
-        position: absolute;
-        top: 7%;
-        left: 15%;
-        border-radius: 150px;
-        overflow: hidden;
-    }
-    .project_div {
-        position: absolute;
-        top: 32%;
-        left: 10%;
-        width: 80%;
-        height: 10%;
-        padding: 20px 5px;
-    }
-    .para {
-        color: rgba(255, 255, 255, 1);
-        font-family: Inter;
-        font-size: 16px;
-        opacity: 1;
-        text-align: left;
-        margin-top: 5px;
-        position: relative;
-        top: 35px;
-    }
-}
-
-@media only screen and (min-width: 1281px) {
-    .project_div {
-        position: absolute;
-        top: 75%;
-        left: 30%;
-        width: 40%;
-        height: 10%;
-        padding: 20px 5px;
-    }
-    .para {
-        color: rgba(255, 255, 255, 1);
-        font-family: Inter;
-        font-size: 16px;
-        opacity: 1;
-        text-align: left;
-        margin-top: 5px;
-        position: relative;
-        top: 15px;
-    }
-    .top_block {
-        width: 40%;
-        height: 20%;
-        background: rgba(48, 71, 94, 1);
-        opacity: 1;
-        position: absolute;
-        top: 20%;
-        left: 30%;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        overflow: hidden;
-    }
-    .bottom_block {
-        width: 40%;
-        height: 35%;
-        background: rgba(49, 49, 49, 1);
-        opacity: 1;
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        overflow: hidden;
-        padding: 10px 20px;
-    }
-    .profile_image {
-        width: 150px;
-        height: 150px;
-        background: url(../images/v2_31.png);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        opacity: 1;
-        position: absolute;
-        top: 25%;
-        left: 31%;
-        border-top-left-radius: 150px;
-        border-top-right-radius: 150px;
-        border-bottom-left-radius: 150px;
-        border-bottom-right-radius: 150px;
-        overflow: hidden;
-    }
 }
