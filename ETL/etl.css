@@ -1,0 +1,119 @@
+body {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.background {
+    width: 100%;
+    height: 92vh;
+    background: rgba(34, 40, 49, 1);
+    opacity: 1;
+    overflow: hidden;
+    color: white;
+}
+
+.home-icon {
+    font-size: 50px !important;
+    color: white !important;
+    margin-left: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 5vh;
+    padding: 10px 5px 10px 5px;
+    background: rgba(48, 71, 94, 1);
+    overflow: hidden;
+    color: white;
+    font-weight: Bold;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header span {
+    display: inline-block;
+    width: 90vw;
+    text-align: center;
+}
+
+.container-right {
+    width: 36%;
+    height: 84%;
+    float: right;
+    margin: 2%
+}
+
+.container-left {
+    width: 56%;
+    height: 84%;
+    position: absolute;
+    margin: 2%;
+}
+
+.pieChartDiv {
+    width: 100%;
+    height: 90%;
+    margin-top: 10%;
+}
+
+.left-charts {
+    display: block;
+    box-sizing: border-box;
+    height: 45%;
+    width: 70%;
+}
+
+.timeSlicer {
+    margin: auto;
+    display: table;
+    color: white;
+}
+
+.endSlicer {
+    float: right;
+}
+
+#timeSlicerInput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 30px;
+    /* Slider handle height */
+    background: #A1541F;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+#timeSlicerInput {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    width: 80vw;
+    appearance: none;
+    height: 25px;
+    /* Specified height */
+    background: #d3d3d3;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.kpi {
+    border: 1px solid white;
+    border: radium;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Helvetica;
+    font-weight: bold;
+    margin: auto;
+    width: 35%;
+    display: inline;
+    padding: 5px 10px;
+}

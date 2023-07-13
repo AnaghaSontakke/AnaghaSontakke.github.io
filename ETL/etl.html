@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Anagha Sontakke Portfolio</title>
+    <link rel="stylesheet" href="./etl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-fetch@3"></script>
+
+    <body>
+        <div class="header">
+            <a href="../index.html"><i class="fa fa-home home-icon" aria-hidden="true"></i></a>
+            <span>StackOverflow Dataset Visualisation</span>
+        </div>
+        <div class="background">
+            <div class="container-left">
+                <div class="left-charts">
+                    <canvas id="barChart1"></canvas>
+                </div>
+                <div class="left-charts">
+                    <canvas id="barChart2"></canvas>
+                </div>
+            </div>
+            <div class="container-right ">
+                <div>
+                    <div class="kpi" id="currentdate">Aug 2008</div>
+                    <div class="kpi" id="MaxSxore">
+                    </div>
+                    <div class="kpi" id="AvgSxore">
+                    </div>
+                </div>
+                <div class="pieChartDiv">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            <div class="timeSlicer">
+                <input type="range" id="timeSlicerInput" min="0" max="2960" value="0" step="1" onchange="timechange()" oninput="timechange()">
+                <div>
+                    <span>Aug'08</span>
+                    <span class="endSlicer">Sep'16</span>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="./etl.js" defer="defer"></script>
+    </body>
+
+</html>
